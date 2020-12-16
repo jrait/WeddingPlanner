@@ -1,0 +1,11 @@
+<h1>@ViewBag.Wedding.PartnerOne and @ViewBag.Wedding.PartnerTwo's Wedding</h1>
+
+<h3>Date: @ViewBag.Wedding.Date.ToLongDateString()</h3>
+
+<h4>Guests:</h4>
+<ul>
+    @foreach(RSVP r in ViewBag.Wedding.RSVPs)
+    {
+        <li>@r.GuestList.FirstName @r.GuestList.LastName</li>
+    }
+</ul>

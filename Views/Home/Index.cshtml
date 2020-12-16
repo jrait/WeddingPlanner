@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <a class = "btn btn-primary" href = "/add">Plan a wedding</a>
+    <a class = "btn btn-secondary" href = "/logout">Logout</a>
+    <table class = "table m-3">
+        <thead>
+            <tr>
+                <th>Wedding</th>
+                <th>Date</th>
+                <th>Guests</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Wedding w in ViewBag.AllWeddings)
+            {
+                <tr>
+                    <td><a href = "/weddings/@w.WeddingID">@w.PartnerOne & @w.PartnerTwo</a></td>
+                    <td>@w.Date.ToShortDateString()</td>
+                    <td>@w.RSVPs.Count()</td>
+                    <td>
+                        @{
+                            if(ViewBag.User.UserID == w.UserID)
+                            {
+                                <a class = "btn btn-danger" href = "/delete/@w.WeddingID">Delete</a>
+                            }
+                            else if(ViewBag.UserWeddings.Contains(w.WeddingID))
+                            {
+                                <a class = "btn btn-warning" href = "/unrsvp/@w.WeddingID">Un-RSVP</a>
+                            }
+                            else{
+                                <a class = "btn btn-success"href = "/rsvp/@w.WeddingID">RSVP</a>
+                            }
+
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

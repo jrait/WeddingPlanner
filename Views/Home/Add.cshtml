@@ -1,0 +1,20 @@
+﻿
+<h1>Plan your Wedding!</h1>
+@model Wedding
+<form asp-action = "Create" asp-controller = "Home">
+    <label asp-for = "PartnerOne"></label>
+    <input asp-for = "PartnerOne">
+    <span class = "text-danger" asp-validation-for = "PartnerOne"></span>
+    <label asp-for = "PartnerTwo"></label>
+    <input asp-for = "PartnerTwo">
+    <span class = "text-danger" asp-validation-for = "PartnerTwo"></span>
+    <label asp-for = "Date"></label>
+    <input asp-for = "Date">
+    <span class = "text-danger" asp-validation-for = "Date"></span>
+    <label asp-for = "Address"></label>
+    <input asp-for = "Address">
+    <span class = "text-danger" asp-validation-for = "Address"></span>
+    <input type = "submit" value = "Create" class = "btn btn-primary m-3">
+</form>
+
+
